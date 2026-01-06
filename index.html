@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardian AI | Neural Archive & Voice</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="logo">GUARDIAN <span class="accent">NEURAL LINK</span></div>
+        <div class="controls">
+            <button class="btn-connect" onclick="connect()">INITIALIZE LINK</button>
+            <button class="btn-stop" onclick="stopAlarm()">DISARM</button>
+            <div id="status" class="status-offline">CORE: DISCONNECTED</div>
+        </div>
+    </header>
+
+    <main class="grid-layout">
+        <section class="sensor-section">
+            <div class="card" id="fire">
+                <div class="card-header"><span class="card-icon">🔥</span><span class="card-label">THERMAL ANALYSIS</span></div>
+                <div class="card-value" id="val-fire">STABLE</div>
+                <div class="conf-bar"><div id="conf-fire" class="fill" style="width: 0%"></div></div>
+            </div>
+            <div class="card" id="smoke">
+                <div class="card-header"><span class="card-icon">💨</span><span class="card-label">AIR QUALITY</span></div>
+                <div class="card-value" id="val-smoke">NOMINAL</div>
+                <div class="conf-bar"><div id="conf-smoke" class="fill" style="width: 0%"></div></div>
+            </div>
+            <div class="card" id="laser">
+                <div class="card-header"><span class="card-icon">⚡</span><span class="card-label">SECURITY PERIMETER</span></div>
+                <div class="card-value" id="val-laser">SECURE</div>
+                <div class="conf-bar"><div id="conf-laser" class="fill" style="width: 0%"></div></div>
+            </div>
+            <div class="card" id="motion">
+                <div class="card-header"><span class="card-icon">🛰️</span><span class="card-label">PROXIMITY</span></div>
+                <div class="card-value" id="val-motion">CLEAR</div>
+                <div class="conf-bar"><div id="conf-motion" class="fill" style="width: 0%"></div></div>
+            </div>
+            <div class="card" id="water">
+                <div class="card-header"><span class="card-icon">💧</span><span class="card-label">PRECIPITATION</span></div>
+                <div class="card-value" id="val-water">DRY</div>
+                <div class="conf-bar"><div id="conf-water" class="fill" style="width: 0%"></div></div>
+            </div>
+        </section>
+
+        <section class="ai-section">
+            <div class="scanner-box">
+                <canvas id="trendChart"></canvas>
+                <div class="scan-line"></div>
+            </div>
+            <div class="reasoning-box">
+                <div class="reasoning-header">AI REASONING ENGINE</div>
+                <div id="ai-thought">Neural nodes active. Scanning environment...</div>
+            </div>
+        </section>
+
+        <section class="chat-section">
+            <div class="chat-header">NEURAL CHAT INTERFACE</div>
+            <div id="chat-body" class="chat-body">
+                <div class="ai-msg">System Initialized. I am Guardian AI. Type "Summary" for a daily report.</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask Guardian something..." onkeypress="handleChatKey(event)">
+                <button onclick="sendChat()">SEND</button>
+            </div>
+        </section>
+    </main>
+
+    <section class="archive-section">
+        <div class="archive-header">
+            <span>NEURAL EVENT ARCHIVE</span>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search by name (Fire) or Date..." onkeyup="filterArchives()">
+            </div>
+        </div>
+        <div id="archive-grid" class="archive-grid"></div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
